@@ -1,0 +1,19 @@
+!!!
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(type='text/javascript', src='http://code.jquery.com/jquery.min.js')
+    script(type='text/javascript', src='/socket.io/socket.io.js')
+    script(type='text/javascript')
+      var socket = io.connect();
+      socket.on('count change', function(count) {
+        // event
+        $('#count').text(count);
+      });
+      
+      socket.on('someone plays sound', function(data) {
+        $('#soundID').text('b_07' + data.soundID + '.mp3');
+        $('#b_07'+data.soundID).get(0).play();
+      });
+  body!= body
